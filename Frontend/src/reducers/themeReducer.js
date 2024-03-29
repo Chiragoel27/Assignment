@@ -1,6 +1,5 @@
-// reducers/themeReducer.js
 const initialState = {
-  primaryColor: 'white', // Default primary color
+  primaryColor: 'white',
 };
 
 const themeReducer = (state = initialState, action) => {
