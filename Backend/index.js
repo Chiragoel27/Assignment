@@ -1,23 +1,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Import CORS
+const cors = require('cors'); 
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors()); // Enable CORS for all routes
+app.use(cors()); 
 
-// Define the user model
 const User = mongoose.model('User', new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   color: { type: String, default: 'white' }
 }));
 
-// MongoDB connection string
 const mongoURI = 'mongodb://127.0.0.1:27017/assignment';
 
-// Connect to MongoDB
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -29,7 +26,6 @@ mongoose.connect(mongoURI, {
   console.error('MongoDB Connection Error:', err);
 });
 
-// Define UserController
 const UserController = {
   addUser: async (req, res) => {
     try {
@@ -94,17 +90,14 @@ const UserController = {
   }
 };
 
-// Define routes
 const router = express.Router();
 router.post('/addUser', UserController.addUser);
 router.post('/login', UserController.findUser);
 router.post('/getColor', UserController.getColor);
 router.post('/setColor', UserController.setColor);
 
-// Use routes
 app.use('/api', router);
 
-// Start the Express server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
