@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
-// import './RegistrationForm.css'; // Assuming you have a separate CSS file for styling
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState('');
@@ -29,16 +28,13 @@ const RegistrationForm = () => {
       });
       if (response.ok) {
         console.log('User registered successfully!');
-        // Reset form fields after successful registration
         setUsername('');
         setPassword('');
       } else {
         console.error('Failed to register user:', response.statusText);
-        // Handle error, show message to user, etc.
       }
     } catch (error) {
       console.error('Error occurred during registration:', error);
-      // Handle error, show message to user, etc.
     }
   };
 
