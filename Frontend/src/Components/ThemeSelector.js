@@ -28,11 +28,9 @@ const ThemeSelector = ({ username }) => {
 
       console.log('Color updated successfully');
       
-      // Apply the selected color to the background of the body element
       document.body.style.backgroundColor = color;
     } catch (error) {
       console.error('Error updating color:', error);
-      // Handle error, show message to user, etc.
     }
   };
 
@@ -44,7 +42,6 @@ const ThemeSelector = ({ username }) => {
         <button onClick={() => handleColorChange('blue')}>Blue</button>
         <button onClick={() => handleColorChange('green')}>Green</button>
         <button onClick={() => handleColorChange('red')}>Red</button>
-        {/* Add more color options as needed */}
       </div>
     </div>
   );
