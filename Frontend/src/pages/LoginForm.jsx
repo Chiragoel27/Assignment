@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
-// import './LoginForm.css'; // Assuming you have a separate CSS file for styling
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -32,18 +31,18 @@ const LoginForm = () => {
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.message === 'Login successful') {
-          // Store the username in localStorage
+          
           localStorage.setItem('username', username);
-          // Redirect to the home page using navigate function
+          
           navigate('/home');
         } else {
-          // Show a popup for wrong credentials
+          
           alert('Wrong credentials');
         }
       } else {
-        const responseData = await response.json(); // Assuming the error response is in JSON format
+        const responseData = await response.json();
         if (responseData && responseData.error) {
-          // Show a popup for wrong credentials
+          
           alert(responseData.error);
         } else {
           alert('Unknown error occurred');
